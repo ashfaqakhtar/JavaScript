@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            background-color: rgba(0, 0, 0, 0.329);
+            
+        }
+
+        .item {
+            width: 70vw;
+            height: 70vh;
+        }
+
+        .buttons {
+            width: 70vw;
+            height: 10vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        button {
+            background-color: navy;
+            color: white;
+            padding: 10px;
+            width: 20%;
+            font-size: 25px;
+            border: none;
+            cursor: pointer;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="item">
+            <img src="images/pic1.jpg" id="img" width="100%" height="100%" alt="">
+        </div>
+        <div class="buttons">
+            <button onclick="fun1()">Previous</button>
+            <button onclick="fun4()">Play</button>
+            <button onclick="fun3()">Stop</button>
+            <button onclick="fun2()">Next</button>
+        </div>
+    </div>
+</body>
+<script>
+    var images = [
+        "images/pic1.jpg",
+        "images/pic2.jpg",
+        "images/pic3.jpg",
+        "images/pic4.jpg",
+        "images/pic5.jpg",
+        "images/pic6.jpg",
+        "images/pic7.jpg",
+        "images/pic8.jpg"
+    ]
+    var index = 0
+    var img = document.getElementById("img")
+    function fun1() {
+        if (index == 0)
+            index = images.length - 1
+        else
+            index--
+
+        img.src = images[index]
+    }
+
+    function fun2() {
+        if (index == images.length - 1)
+            index = 0
+        else
+            index++
+
+        img.src = images[index]
+    }
+    var time = setInterval(fun2, 1000)
+
+    function fun3(){
+        clearInterval(time) 
+    }
+    function fun4(){
+        time = setInterval(fun2, 1000)
+    }
+</script>
+
+</html>
